@@ -36,6 +36,12 @@ inquirer
   .then((response) => {
 
     const { name, ID, role, email } = response;
-    let teamMemberData = `New team member information: Name: ${name}/n Role:${role}/n Email: ${email}/n ID Number: ${ID}`;
+
+    let teamMemberData = `New team member information: 
+    Name: ${name} 
+    Role:${role}
+    Email: ${email}
+    ID Number: ${ID}`;
+    
     console.log(teamMemberData);
   });
