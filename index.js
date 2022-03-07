@@ -1,47 +1,14 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
+const Employee = require('./lib/employee');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
+const Manager = require('./lib/manager');
 
-inquirer
-  .prompt([
-    {
-      type: 'input',
-      message: 'What is the new team members name?',
-      name: 'name',
-    },
-    {
-      type: 'input',
-      message: 'What is this team members ID number?',
-      name: 'ID',
-    },
-    {
-      type: 'list',
-      message: 'What is this team members role?',
-      name: 'role',
-      choices: ['Employee', 'Engineer', 'Manager', 'Intern']
-    },
-    {
-      type: 'input',
-      message: 'What is this team members email?',
-      name: 'email',
-    },
-    {
-      type: 'confirm',
-      message: 'Would you like to add another team member at this time?',
-      name: 'add',
-      choices: ['Yes', 'No'],
+const newEmployee = new Employee('','','','');
+var employeeList = [];
 
-    }
-  ])
+newEmployee.promptUpdateEmployee();
+employeeList.push(newEmployee);
 
-  .then((response) => {
-
-    const { name, ID, role, email } = response;
-
-    let teamMemberData = `New team member information: 
-    Name: ${name} 
-    Role:${role}
-    Email: ${email}
-    ID Number: ${ID}`;
-    
-    console.log(teamMemberData);
-  });
+//use .map to write a drawing function that puts the info from each object onto the html page on a card    
