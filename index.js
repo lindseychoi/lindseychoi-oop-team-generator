@@ -30,17 +30,17 @@ function createStaffCards(employeeList) {
         //     officeNum = `<li class="list-group-item">${teamMember.email}</li>`
         // }
         const addThisCard =
-        `<div id="generate-employee-cards" class="col">
-            <div class="card myCardEffects myFont" style="width: 18rem;">
-                <div class="card-header myCardHeader">
-                ${teamMember.role}
-                </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">${teamMember.name}</li>
-                <li class="list-group-item">${teamMember.id}</li>
-                <li class="list-group-item">${teamMember.email}</li>
-            </ul>
-        </div>`;
+                `<div id="generate-employee-cards" class="col">
+                    <div class="card myCardEffects myFont" style="width: 18rem;">
+                        <div class="card-header myCardHeader">
+                        ${teamMember.role}
+                        </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">${teamMember.name}</li>
+                        <li class="list-group-item">${teamMember.id}</li>
+                        <li class="list-group-item">${teamMember.email}</li>
+                    </ul>
+                </div>`;
         //consider if statements here to add office number, github name, or intern school
         staffMembers += addThisCard;
     } 
