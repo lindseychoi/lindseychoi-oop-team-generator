@@ -18,11 +18,36 @@ async function main() {
   }
 
   console.log(employeeList);
-  generateEmployeeHTML(employeeList);
+  const allStaffCards = createStaffCards(employeeList);
+  generateEmployeeHTML(allStaffCards);
 }
 
-function generateEmployeeHTML(employeeList) {
+function createStaffCards(employeeList) { 
+    let staffMembers = "";
+    for (let index = 0; index < employeeList.length; index++) {
+        const teamMember = employeeList[index];
+        // if (teamMember.office) {
+        //     officeNum = `<li class="list-group-item">${teamMember.email}</li>`
+        // }
+        const addThisCard =
+        `<div id="generate-employee-cards" class="col">
+            <div class="card myCardEffects myFont" style="width: 18rem;">
+                <div class="card-header myCardHeader">
+                ${teamMember.role}
+                </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">${teamMember.name}</li>
+                <li class="list-group-item">${teamMember.id}</li>
+                <li class="list-group-item">${teamMember.email}</li>
+            </ul>
+        </div>`;
+        //consider if statements here to add office number, github name, or intern school
+        staffMembers += addThisCard;
+    } 
+    return staffMembers;
+};
 
+function generateEmployeeHTML(employeeList) {  
   const htmlData =
     `<!DOCTYPE html>
         <html lang="en">
@@ -49,54 +74,7 @@ function generateEmployeeHTML(employeeList) {
             <br>
             <div class="container">
                 <div class="row">
-                    <div id="generate-employee-cards" class="col">
-                        <div class="card myCardEffects myFont" style="width: 18rem;">
-                            <div class="card-header myCardHeader">
-                            ${employeeList[0].role}
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">${employeeList[0].name}</li>
-                                <li class="list-group-item">${employeeList[0].id}</li>
-                                <li class="list-group-item">${employeeList[0].email}</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card myCardEffects myFont" style="width: 18rem;">
-                            <div class="card-header myCardHeader">
-                            ${employeeList[1].role}
-                            </div>
-                            <ul class="list-group list-group-flush">
-                            <li class="list-group-item">${employeeList[1].name}</li>
-                            <li class="list-group-item">${employeeList[1].id}</li>
-                            <li class="list-group-item">${employeeList[1].email}</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card myCardEffects myFont" style="width: 18rem;">
-                            <div class="card-header myCardHeader">
-                            ${employeeList[2].role}
-                            </div>
-                            <ul class="list-group list-group-flush">
-                            <li class="list-group-item">${employeeList[2].name}</li>
-                            <li class="list-group-item">${employeeList[2].id}</li>
-                            <li class="list-group-item">${employeeList[2].email}</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card myCardEffects myFont" style="width: 18rem;">
-                            <div class="card-header myCardHeader">
-                            ${employeeList[3].role}
-                            </div>
-                            <ul class="list-group list-group-flush">
-                            <li class="list-group-item">${employeeList[3].name}</li>
-                            <li class="list-group-item">${employeeList[3].id}</li>
-                            <li class="list-group-item">${employeeList[3].email}</li>
-                            </ul>
-                        </div>
-                    </div>
+                ${employeeList}     
                 </div>
             </div>
             <script src="/index.js"></script>
