@@ -47,24 +47,68 @@ async function main() {
 
 function createStaffCards(employeeList) { 
     let staffMembers = "";
+    var addThisCard = "";
+    // var officeNum = "";
+    // var gitHubStuff = "";
+    // var schoolID = "";
     for (let index = 0; index < employeeList.length; index++) {
         const teamMember = employeeList[index];
-        // if (teamMember.office) {
-        //     officeNum = `<li class="list-group-item">${teamMember.email}</li>`
-        // }
-        const addThisCard =
-                `<div id="generate-employee-cards" class="col">
-                    <div class="card myCardEffects myFont" style="width: 18rem;">
-                        <div class="card-header myCardHeader">
-                        ${teamMember.role}
-                        </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">${teamMember.name}</li>
-                        <li class="list-group-item">${teamMember.id}</li>
-                        <li class="list-group-item">${teamMember.email}</li>
-                    </ul>
-                </div>`;
-        //consider if statements here to add office number, github name, or intern school
+        if (teamMember.office) {
+            addThisCard =  
+            `<div id="generate-employee-cards" class="col">
+                <div class="card myCardEffects myFont" style="width: 18rem;">
+                    <div class="card-header myCardHeader">
+                    ${teamMember.role}
+                    </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Name: ${teamMember.name}</li>
+                    <li class="list-group-item">ID: ${teamMember.id}</li>
+                    <li class="list-group-item">Email: ${teamMember.email}</li>
+                    <li class="list-group-item">Office: ${teamMember.office}</li>
+                </ul>
+            </div>`;
+        } else if (teamMember.github) {
+            addThisCard =  
+            `<div id="generate-employee-cards" class="col">
+                <div class="card myCardEffects myFont" style="width: 18rem;">
+                    <div class="card-header myCardHeader">
+                    ${teamMember.role}
+                    </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Name: ${teamMember.name}</li>
+                    <li class="list-group-item">ID: ${teamMember.id}</li>
+                    <li class="list-group-item">Email: ${teamMember.email}</li>
+                    <li class="list-group-item">Office: ${teamMember.github}</li>
+                </ul>
+            </div>`;        
+        } else if (teamMember.school) {
+            addThisCard =  
+            `<div id="generate-employee-cards" class="col">
+                <div class="card myCardEffects myFont" style="width: 18rem;">
+                    <div class="card-header myCardHeader">
+                    ${teamMember.role}
+                    </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Name: ${teamMember.name}</li>
+                    <li class="list-group-item">ID: ${teamMember.id}</li>
+                    <li class="list-group-item">Email: ${teamMember.email}</li>
+                    <li class="list-group-item">Office: ${teamMember.school}</li>             
+                </ul>
+            </div>`
+        } else {
+            `<div id="generate-employee-cards" class="col">
+                <div class="card myCardEffects myFont" style="width: 18rem;">
+                    <div class="card-header myCardHeader">
+                    Team Member
+                    </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Name: ${teamMember.name}</li>
+                    <li class="list-group-item">ID: ${teamMember.id}</li>
+                    <li class="list-group-item">Email: ${teamMember.email}</li>
+                    <li class="list-group-item">Office: ${teamMember.school}</li>             
+                </ul>
+            </div>`
+        };
         staffMembers += addThisCard;
     } 
     return staffMembers;
