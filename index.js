@@ -1,3 +1,4 @@
+//IMPORTS/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 import fs from 'fs';
 import inquirer from 'inquirer';
 import Employee from './lib/employee.js';
@@ -6,8 +7,30 @@ import Employee from './lib/employee.js';
 // import Manager from './lib/manager.js';
 // const Employee = require('./lib/employee.js');
 
-async function main() {
+//VARIABLES////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+//FUNCTIONS///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function addAnotherEmployee() {
+    inquirer.prompt([
+        {
+        type: 'confirm',
+        name: 'add',
+        message: 'Enter another team member? ',
+        }
+    ])  
+        .then((response) => {
+            if (response.add === true) {
+                main();
+            } else {
+                console.log("here i am");
+                return
+            };
+    })
+}
+
+async function main() {
   var employeeList = [];
   var numOfEmployees = 4;
 
@@ -94,6 +117,6 @@ function generateEmployeeHTML(employeeList) {
         });
       };
 
-main();
-
-//use .map to write a drawing function that puts the info from each object onto the html page on a card    
+//LOGIC/////////////////////////////////////////////////////////////////////////////////////////////////////////
+// main();
+addAnotherEmployee();
