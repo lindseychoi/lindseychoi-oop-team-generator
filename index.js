@@ -1,9 +1,10 @@
 //IMPORTS/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-import fs from 'fs';
-import inquirer from 'inquirer';
-import Engineer from './lib/engineer.js';
-import Intern from './lib/intern.js';
-import Manager from './lib/manager.js';
+
+const fs = require("fs");
+const inquirer = require("inquirer");
+const Engineer = require("./lib/engineer.js");
+const Intern = require("./lib/intern.js");
+const Manager = require("./lib/manager.js");
 
 //VARIABLES////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //no global variables 

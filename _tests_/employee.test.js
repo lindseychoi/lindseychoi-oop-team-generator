@@ -1,14 +1,14 @@
 const Employee = require("../lib/employee.js");
 
 test("should create a class called employee", () => {
-    var nameVal = "lindsey";jes
+    var nameVal = "lindsey";
     var emailVal = "lindsey@gmail.com";
     var idVal = "1989";
     var roleVal = "Engineer";
     const obj = new Employee(nameVal, emailVal, idVal, roleVal);
     obj.name = nameVal;
-    expect(nameVal in obj.name).toEqual(true);
-    expect(emailVal in obj.email).toEqual(true);
-    expect(idVal in obj.id).toEqual(true);
-    expect(roleVal in obj.role).toEqual(true);
+    expect(obj.name).toEqual(nameVal);
+    expect(obj.email).toEqual(emailVal);
+    expect(obj.id).toEqual(idVal);
+    expect(obj.role).toEqual(roleVal);
 })
